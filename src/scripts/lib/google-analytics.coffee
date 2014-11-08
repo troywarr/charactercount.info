@@ -2,14 +2,14 @@
 #   see: http://www.ignoredbydinosaurs.com/2014/09/deconstructing-the-google-analytics-tag
 class GoogleAnalytics
 
-  constructor: ->
+  constructor: (@account) ->
     window.GoogleAnalyticsObject = 'ga'
     window.ga =
       q: []
       l: +new Date()
 
-  trackPageview: ->
-    window.ga 'create', 'UA-55183285-1', 'auto'
+  trackPageview: =>
+    window.ga 'create', @account, 'auto'
     window.ga 'send', 'pageview'
 
   init: =>
